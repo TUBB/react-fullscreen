@@ -24,7 +24,7 @@ class App extends Component {
           <div 
             onClick={() => this.refs.fullScreenRef.fullScreen()} 
             style={{cursor: 'pointer'}}>
-            {!this.state.isFullScreen ? '开启全屏' : '关闭全屏'}
+            {!this.state.isFullScreen ? 'Request' : 'Exit'}
           </div>
         </FullScreen>
         
@@ -37,7 +37,7 @@ class App extends Component {
               paddingTop: 30,
               color:'red',
             }}>
-              {!this.state.isFullScreen ? '具体Element开启全屏' : '具体Element关闭全屏'}
+              {!this.state.isFullScreen ? 'Request by Element' : 'Exit by Element'}
             </div>        
           </FullScreen>
           <FullScreen></FullScreen>
