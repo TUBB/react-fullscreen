@@ -1,6 +1,6 @@
 {
-  "name": "react-fullscreen",
-  "version": "1.0.0",
+  "name": "react-request-fullscreen",
+  "version": "1.0.1",
   "description": "",
   "main": "dist/bundle.js",
   "files": [
@@ -10,7 +10,15 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack"
   },
-  "author": "",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/TUBB/react-fullscreen.git"
+  },
+  "keywords": [
+    "fullscreen",
+    "react"
+  ],
+  "author": "Bingbing Tu <tu.bingbing@163.com>",
   "license": "MIT",
   "dependencies": {
     "react": "^16.6.0",

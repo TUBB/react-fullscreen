@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom'
-import FullScreen from 'react-fullscreen';
+import FullScreen from 'react-request-fullscreen';
 import logo from './logo.svg';
 import './App.css';
 import User from './User'
@@ -22,7 +22,7 @@ class App extends Component {
             isFullScreen,
           })}}>
           <div 
-            onClick={() => this.refs.fullScreenRef.launchFullScreen()} 
+            onClick={() => this.refs.fullScreenRef.fullScreen()} 
             style={{cursor: 'pointer'}}>
             {!this.state.isFullScreen ? '开启全屏' : '关闭全屏'}
           </div>
@@ -31,7 +31,7 @@ class App extends Component {
         <FullScreen ref='elFullScreenRef'>
           <div 
             ref='elRef' 
-            onClick={() => this.refs.elFullScreenRef.launchFullScreen(ReactDOM.findDOMNode(this.refs.elRef))} 
+            onClick={() => this.refs.elFullScreenRef.fullScreen(ReactDOM.findDOMNode(this.refs.elRef))} 
             style={{
               cursor: 'pointer', 
               paddingTop: 30,
@@ -45,7 +45,7 @@ class App extends Component {
           <a href='#' onClick={() => {
             ReactDOM.render(<User />, document.getElementById('root'));
           }}>User Page</a><br/>
-          <a href='https://www.github.com'>GITHUB</a>
+          <a href='https://github.com/TUBB/react-fullscreen'>GITHUB</a>
       </div>
     );
   }

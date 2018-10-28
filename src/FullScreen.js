@@ -27,7 +27,7 @@ export default class FullScreen extends Component {
       document.msFullscreenEnabled);
   }
 
-  launchFullScreen(element) {
+  fullScreen(element) {
     if (!this.fullScreenSupported()) {
       this._onFullScreenError(new Error('fullscreen is not supported'))
     } else {
@@ -98,7 +98,7 @@ export default class FullScreen extends Component {
     }
   }
 
-  _onFullScreenError(error) {
+  _onFullScreenError(error = new Error('error')) {
     if(!!this.props.onFullScreenError) {
       this.props.onFullScreenError(error)
     }
