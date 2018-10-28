@@ -27,14 +27,15 @@ After that, use the [FulllScreen](https://github.com/TUBB/react-fullscreen/blob
     <div 
         onClick={() => this.refs.fullScreenRef.fullScreen()} 
         style={{cursor: 'pointer'}}>
-        {!this.state.isFullScreen ? '开启全屏' : '关闭全屏'}
+        {!this.state.isFullScreen ? 'Request' : 'Exit'}
     </div>
 </FullScreen>
 ```
+Please see [demo](https://github.com/TUBB/react-fullscreen/blob/master/examples/demo/src/App.js) project for detail.
 
 ## API
-`FullScreen.fullScreen()` request or exit fullscreen feature.
-`FullScrren.fullScreenSupported()` whether fullscreen feature is supported for the browser.
+#### `FullScreen.fullScreen()` request or exit fullscreen feature.
+#### `FullScrren.fullScreenSupported()` whether fullscreen feature is supported for the browser.
 
 ## License
-MIT
+[MIT](https://opensource.org/licenses/MIT)
