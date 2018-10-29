@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom'
-import FullScreen from 'react-request-fullscreen';
+import FullScreen, { isFullScreen, fullScreenSupported } from 'react-request-fullscreen';
 import logo from './logo.svg';
 import './App.css';
 import User from './User'
@@ -17,24 +17,26 @@ class App extends Component {
     return (
       <div className="App">
         <img src={logo} className="App-logo" alt="logo" />
-        <FullScreen ref='fullScreenRef' onFullScreenChange={isFullScreen => {
+        <p>Browser support fullscreen feature: {`${fullScreenSupported()}`}</p>
+        <p>Browser is fullscreen: {`${isFullScreen()}`}</p>
+        <FullScreen ref={ref => this.fullScreenRef = ref} onFullScreenChange={isFullScreen => {
           this.setState({
             isFullScreen,
           })}}>
           <div 
-            onClick={() => this.refs.fullScreenRef.fullScreen()} 
+            onClick={() => this.fullScreenRef.fullScreen()} 
             style={{cursor: 'pointer'}}>
             {!this.state.isFullScreen ? 'Request' : 'Exit'}
           </div>
         </FullScreen>
         
-        <FullScreen ref='elFullScreenRef'>
+        <FullScreen ref={ref => this.elFullScreenRef = ref}>
           <div 
-            ref='elRef' 
-            onClick={() => this.refs.elFullScreenRef.fullScreen(ReactDOM.findDOMNode(this.refs.elRef))} 
+            ref={ref => this.elRef = ref} 
+            onClick={() => this.elFullScreenRef.fullScreen(ReactDOM.findDOMNode(this.elRef))} 
             style={{
               cursor: 'pointer', 
-              paddingTop: 30,
+              paddingTop: 10,
               color:'red',
             }}>
               {!this.state.isFullScreen ? 'Request by Element' : 'Exit by Element'}
