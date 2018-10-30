@@ -1,5 +1,5 @@
 # react-request-fullscreen 
-Request fullscreen feature for browsers. used as a react component.
+Request fullscreen feature for browsers, used as a react component.
 
 ## npm install
 ```script
@@ -12,17 +12,17 @@ npm i react-request-fullscreen
 import FullScreen from 'react-request-fullscreen';
 ```
 ```javascript
-  render() {
+render() {
     return (
-      <FullScreen />
+        <FullScreen />
     );
-  }
+}
 ```
 After that, use the [FulllScreen](https://github.com/TUBB/react-fullscreen/blob/master/src/FullScreen.js) refs(`fullScreen` method) to request or exit fullscreen feature for browsers.
 ```javascript
 <FullScreen ref={ref => this.fullScreenRef = ref} onFullScreenChange={isFullScreen => {
     this.setState({
-    isFullScreen,
+        isFullScreen,
     })}}>
     <div 
         onClick={() => this.fullScreenRef.fullScreen()} 
@@ -39,7 +39,7 @@ Please see [demo](https://github.com/TUBB/react-fullscreen/blob/master/examples/
 #### `isFullScreen()` the browser is fullscreen or not.
 
 ## Note
-Most code is copy from [chrisdickinson/fullscreen](https://github.com/chrisdickinson/fullscreen)
+Most code is come from [chrisdickinson/fullscreen](https://github.com/chrisdickinson/fullscreen)
 
 ## License
 [MIT](https://opensource.org/licenses/MIT)

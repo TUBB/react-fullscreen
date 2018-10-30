@@ -1,5 +1,5 @@
 import FullScreen from './FullScreen'
-import { isFullScreen as full, fullScreenSupported as supported } from './utils'
+import { _isFullScreen as full, _fullScreenSupported as supported } from './utils'
 export function isFullScreen() {
     return full()
 }
