@@ -18,7 +18,7 @@ import FullScreen from 'react-request-fullscreen';
     );
   }
 ```
-After that, use the [FulllScreen](https://github.com/TUBB/react-fullscreen/blob/master/src/FullScreen.js) refs(`fullScreen` method) to request or exit fullscreen feature for browsers.
+After that, use the [FulllScreen](https://github.com/TUBB/react-fullscreen/blob/master/src/FullScreen.js) refs(`fullScreen` method) to request or exit fullscreen feature for browsers.
 ```javascript
 <FullScreen ref={ref => this.fullScreenRef = ref} onFullScreenChange={isFullScreen => {
     this.setState({
@@ -39,7 +39,7 @@ Please see [demo](https://github.com/TUBB/react-fullscreen/blob/master/examples/
 #### `isFullScreen()` the browser is fullscreen or not.
 
 ## Note
-Most code is copy from [chrisdickinson/fullscreen](https://github.com/chrisdickinson/fullscreen)
+Most code is come from [chrisdickinson/fullscreen](https://github.com/chrisdickinson/fullscreen)
 
 ## License
 [MIT](https://opensource.org/licenses/MIT)
