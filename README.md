@@ -18,7 +18,7 @@ render() {
     );
 }
 ```
-After that, use the [FulllScreen](https://github.com/TUBB/react-fullscreen/blob/master/src/FullScreen.js) refs(`fullScreen` method) to request or exit fullscreen feature for browsers.
+After that, use the [FulllScreen](https://github.com/TUBB/react-fullscreen/blob/master/src/FullScreen.js) refs(`fullScreen` method) to request or exit fullscreen feature for browsers.
 ```javascript
 <FullScreen ref={ref => this.fullScreenRef = ref} onFullScreenChange={isFullScreen => {
     this.setState({
