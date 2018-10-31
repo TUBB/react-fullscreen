@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { isFullScreen, fullScreenSupported } from './utils'
+import { _isFullScreen as isFullScreen, _fullScreenSupported as fullScreenSupported } from './utils'
 
 const vendors = ['', 'webkit', 'moz']
 
