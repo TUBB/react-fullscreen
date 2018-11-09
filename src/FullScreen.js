@@ -22,6 +22,9 @@ export default class FullScreen extends Component {
   }
 
   fullScreen(element) {
+    if (element && element.toString() !== '[object HTMLDivElement]') {
+      throw new Error('element must be DOM node.')
+    }
     if (fullScreenSupported()) {
       if (!isFullScreen()) {
         if (!element) {
@@ -37,13 +40,13 @@ export default class FullScreen extends Component {
   }
 
   _requestFullScreen(element) {
-    if(element.requestFullscreen) {
+    if (element.requestFullscreen) {
       element.requestFullscreen()
-    } else if(element.mozRequestFullScreen) {
+    } else if (element.mozRequestFullScreen) {
       element.mozRequestFullScreen()
-    } else if(element.msRequestFullscreen){
+    } else if (element.msRequestFullscreen) {
       element.msRequestFullscreen()
-    } else if(element.webkitRequestFullscreen) {
+    } else if (element.webkitRequestFullscreen) {
       element.webkitRequestFullScreen()
     }
   }

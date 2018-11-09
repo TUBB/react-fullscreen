@@ -33,7 +33,7 @@ class App extends Component {
         <FullScreen ref={ref => this.elFullScreenRef = ref}>
           <div 
             ref={ref => this.elRef = ref} 
-            onClick={() => this.elFullScreenRef.fullScreen(ReactDOM.findDOMNode(this.elRef))} 
+            onClick={() => this.elFullScreenRef.fullScreen(this.elRef)} 
             style={{
               cursor: 'pointer', 
               paddingTop: 10,
