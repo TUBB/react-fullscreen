@@ -64,7 +64,7 @@ class App extends React.Component {
   }
 }
 ```
-Please see [demo](https://github.com/TUBB/react-fullscreen/blob/master/examples/demo/src/App.js) project for detail.
+Please see [demo](https://github.com/TUBB/react-fullscreen/blob/master/src/example/App.js) project for detail.
 
 ## API
 #### `FullScreen.fullScreen()` request or exit fullscreen feature.
