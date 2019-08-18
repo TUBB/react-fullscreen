@@ -20,3 +20,6 @@ _nogit
 
 .idea/*
 examples/demo/node_modules
+
+preview/*
+webpack.preview.js

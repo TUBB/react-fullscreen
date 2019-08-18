@@ -6,6 +6,9 @@ Request fullscreen feature for browsers, used as a react component.
 npm i react-request-fullscreen
 ```
 
+## Demo
+[Example](http://tubb.github.io/react-fullscreen/example.html)
+
 ## Usage
 [FulllScreen](https://github.com/TUBB/react-fullscreen/blob/master/src/FullScreen.js) is a react component, so you can do like this.
 ```javascript
@@ -20,16 +23,46 @@ render() {
 ```
 After that, use the [FulllScreen](https://github.com/TUBB/react-fullscreen/blob/master/src/FullScreen.js) refs(`fullScreen` method) to request or exit fullscreen feature for browsers.
 ```javascript
-<FullScreen ref={ref => this.fullScreenRef = ref} onFullScreenChange={isFullScreen => {
+class App extends React.Component { 
+  constructor(props) {
+    super(props)
+    this.state = {
+      isFullScreen: false,
+    }
+  }
+
+  onFullScreenChange(isFullScreen) {
     this.setState({
-        isFullScreen,
-    })}}>
-    <div 
-        onClick={() => this.fullScreenRef.fullScreen()} 
-        style={{cursor: 'pointer'}}>
-        {!this.state.isFullScreen ? 'Request' : 'Exit'}
-    </div>
-</FullScreen>
+      isFullScreen,
+    })
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <p>Browser support fullscreen feature: {`${fullScreenSupported()}`}</p>
+        <p>Browser is fullscreen: {`${isFullScreen()}`}</p>
+        <FullScreen ref={ref => this.fullScreenRef = ref} onFullScreenChange={this.onFullScreenChange.bind(this)}>
+          <div
+            className="rq" 
+            onClick={() => this.fullScreenRef.fullScreen()}>
+            {!this.state.isFullScreen ? 'Request FullScreen' : 'Exit FullScreen'}
+          </div>
+        </FullScreen>
+        <FullScreen ref={ref => this.elFullScreenRef = ref}>
+          <div
+            className="el-rq" 
+            ref={ref => this.elRef = ref} 
+            onClick={() => this.elFullScreenRef.fullScreen(this.elRef)}>
+            {!this.state.isFullScreen ? 'Request FullScreen by Element' : 'Exit FullScreen by Element'}
+          </div>        
+        </FullScreen>
+        <br/>
+        <a href='https://github.com/TUBB/react-fullscreen'>GITHUB</a>
+      </div>
+    );
+  }
+}
 ```
 Please see [demo](https://github.com/TUBB/react-fullscreen/blob/master/examples/demo/src/App.js) project for detail.
 

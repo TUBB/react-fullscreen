@@ -1,10 +1,10 @@
-import React, { Component } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import { _isFullScreen as isFullScreen, _fullScreenSupported as fullScreenSupported } from './utils'
 
 const vendors = ['', 'webkit', 'moz']
 
-export default class FullScreen extends Component {
+export default class FullScreen extends React.Component {
   constructor(props) {
     super(props)
   }
