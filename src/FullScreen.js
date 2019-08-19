@@ -21,15 +21,12 @@ export default class FullScreen extends React.Component {
     this._unwatchFullScreenChange()
   }
 
-  fullScreen(element) {
-    if (element && element.toString() !== '[object HTMLDivElement]') {
+  fullScreen(element = document.documentElement) {
+    if (!this._isElement(element)) {
       throw new Error('element must be DOM node.')
     }
     if (fullScreenSupported()) {
       if (!isFullScreen()) {
-        if (!element) {
-          element = document.documentElement
-        }
         this._requestFullScreen(element)
       } else {
         this._exitFullScreen()
@@ -37,6 +34,14 @@ export default class FullScreen extends React.Component {
     } else {
       this._onFullScreenError(new Error('fullscreen is not supported'))
     }
+  }
+
+  _isElement(input) {
+    return (input != null)
+      && (typeof input === 'object')
+      && (input.nodeType === Node.ELEMENT_NODE)
+      && (typeof input.style === 'object')
+      && (typeof input.ownerDocument === 'object');
   }
 
   _requestFullScreen(element) {

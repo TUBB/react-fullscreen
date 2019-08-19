@@ -21,20 +21,6 @@ module.exports = {
         use: 'babel-loader'
       },
       {
-        test: /\.svg$/,
-        use: [
-          {
-            loader: "babel-loader"
-          },
-          {
-            loader: "react-svg-loader",
-            options: {
-              jsx: true // true outputs JSX tags
-            }
-          }
-        ]
-      },
-      {
         test: /.css$/,
         use: [
           'style-loader',
@@ -89,7 +75,7 @@ module.exports = {
     }),
     new OpenBrowserPlugin(
       { 
-          url: 'http://localhost:8080/example.html' 
+          url: 'http://localhost:8090/example.html' 
       }
     ),
     new CopyPlugin([
@@ -100,6 +86,7 @@ module.exports = {
     ])
   ],
   devServer: {
+    port: 8090,
     contentBase: './dist',
     hot: true
   }
