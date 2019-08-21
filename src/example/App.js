@@ -1,46 +1,48 @@
-import React from 'react';
+import React from 'react'
 import ReactDOM from 'react-dom'
-import FullScreen, { isFullScreen, fullScreenSupported } from '../index';
-import './App.less';
+import FullScreen, { isFullScreen, fullScreenSupported } from '../index'
+import './App.less'
 
-class App extends React.Component { 
-  constructor(props) {
+class App extends React.Component {
+  constructor (props) {
     super(props)
     this.state = {
-      isFullScreen: false,
+      isFullScreen: false
     }
   }
 
-  onFullScreenChange(isFullScreen) {
+  onFullScreenChange (isFullScreen) {
     this.setState({
-      isFullScreen,
+      isFullScreen
     })
   }
 
-  render() {
+  render () {
     return (
-      <div className="App">
+      <div className='app'>
         <p>Browser support fullscreen feature: {`${fullScreenSupported()}`}</p>
         <p>Browser is fullscreen: {`${isFullScreen()}`}</p>
-        <FullScreen ref={ref => this.fullScreenRef = ref} onFullScreenChange={this.onFullScreenChange.bind(this)}>
+        <FullScreen ref={ref => { this.fullScreenRef = ref }} onFullScreenChange={this.onFullScreenChange.bind(this)}>
           <div
-            className="rq" 
-            onClick={() => this.fullScreenRef.fullScreen()}>
+            className='rq'
+            onClick={() => { this.fullScreenRef.fullScreen() }}
+          >
             {!this.state.isFullScreen ? 'Request FullScreen' : 'Exit FullScreen'}
           </div>
         </FullScreen>
-        <FullScreen ref={ref => this.elFullScreenRef = ref}>
+        <FullScreen ref={ref => { this.elFullScreenRef = ref }}>
           <div
-            className="el-rq" 
-            ref={ref => this.elRef = ref} 
-            onClick={() => this.elFullScreenRef.fullScreen(this.elRef)}>
+            className='el-rq'
+            ref={ref => { this.elRef = ref }}
+            onClick={() => { this.elFullScreenRef.fullScreen(this.elRef) }}
+          >
             {!this.state.isFullScreen ? 'Request FullScreen by Element' : 'Exit FullScreen by Element'}
-          </div>        
+          </div>
         </FullScreen>
-        <br/>
+        <br />
         <a href='https://github.com/TUBB/react-fullscreen'>GITHUB</a>
       </div>
-    );
+    )
   }
 }
 

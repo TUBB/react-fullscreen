@@ -5,23 +5,19 @@ import { _isFullScreen as isFullScreen, _fullScreenSupported as fullScreenSuppor
 const vendors = ['', 'webkit', 'moz']
 
 export default class FullScreen extends React.Component {
-  constructor(props) {
-    super(props)
-  }
-
-  render() {
+  render () {
     return this.props.children || ''
   }
 
-  componentDidMount() {
+  componentDidMount () {
     this._watchFullScreenChange()
   }
 
-  componentWillUnmount() {
+  componentWillUnmount () {
     this._unwatchFullScreenChange()
   }
 
-  fullScreen(element = document.documentElement) {
+  fullScreen (element = document.documentElement) {
     if (!this._isElement(element)) {
       throw new Error('element must be DOM node.')
     }
@@ -36,15 +32,15 @@ export default class FullScreen extends React.Component {
     }
   }
 
-  _isElement(input) {
-    return (input != null)
-      && (typeof input === 'object')
-      && (input.nodeType === Node.ELEMENT_NODE)
-      && (typeof input.style === 'object')
-      && (typeof input.ownerDocument === 'object');
+  _isElement (input) {
+    return (input != null) &&
+      (typeof input === 'object') &&
+      (input.nodeType === Node.ELEMENT_NODE) &&
+      (typeof input.style === 'object') &&
+      (typeof input.ownerDocument === 'object')
   }
 
-  _requestFullScreen(element) {
+  _requestFullScreen (element) {
     if (element.requestFullscreen) {
       element.requestFullscreen()
     } else if (element.mozRequestFullScreen) {
@@ -56,7 +52,7 @@ export default class FullScreen extends React.Component {
     }
   }
 
-  _exitFullScreen() {
+  _exitFullScreen () {
     if (document.exitFullscreen) {
       document.exitFullscreen()
     } else if (document.msExitFullscreen) {
@@ -68,8 +64,8 @@ export default class FullScreen extends React.Component {
     }
   }
 
-  _watchFullScreenChange() {
-    for(let i = 0, len = vendors.length; i < len; ++i) {
+  _watchFullScreenChange () {
+    for (let i = 0, len = vendors.length; i < len; ++i) {
       document.addEventListener(vendors[i] + 'fullscreenchange', this._onFullScreenChange.bind(this))
       document.addEventListener(vendors[i] + 'fullscreenerror', this._onFullScreenError.bind(this))
     }
@@ -78,8 +74,8 @@ export default class FullScreen extends React.Component {
     document.addEventListener('MSFullscreenError', this._onFullScreenError.bind(this))
   }
 
-  _unwatchFullScreenChange() {
-    for(let i = 0, len = vendors.length; i < len; ++i) {
+  _unwatchFullScreenChange () {
+    for (let i = 0, len = vendors.length; i < len; ++i) {
       document.removeEventListener(vendors[i] + 'fullscreenchange', this._onFullScreenChange.bind(this))
       document.removeEventListener(vendors[i] + 'fullscreenerror', this._onFullScreenError.bind(this))
     }
@@ -88,14 +84,14 @@ export default class FullScreen extends React.Component {
     document.removeEventListener('MSFullscreenError', this._onFullScreenError.bind(this))
   }
 
-  _onFullScreenChange() {
-    if(this.props.onFullScreenChange) {
+  _onFullScreenChange () {
+    if (this.props.onFullScreenChange) {
       this.props.onFullScreenChange(isFullScreen())
     }
   }
 
-  _onFullScreenError(error = new Error('error')) {
-    if(this.props.onFullScreenError) {
+  _onFullScreenError (error = new Error('error')) {
+    if (this.props.onFullScreenError) {
       this.props.onFullScreenError(error)
     }
   }
@@ -103,5 +99,5 @@ export default class FullScreen extends React.Component {
 
 FullScreen.propTypes = {
   onFullScreenChange: PropTypes.func,
-  onFullScreenError: PropTypes.func,
+  onFullScreenError: PropTypes.func
 }

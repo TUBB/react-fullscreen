@@ -1,16 +1,19 @@
 {
   "name": "react-request-fullscreen",
-  "version": "1.0.8",
+  "version": "1.1.1",
   "description": "",
   "main": "dist/bundle.js",
   "files": [
-    "dist"
+    "dist",
+    "src/index.d.ts"
   ],
+  "types": "./src/index.d.ts", 
   "scripts": {
     "build": "webpack --config webpack.pro.js",
     "watch": "webpack --watch",
     "dev": "webpack-dev-server --config webpack.dev.js --disableHostCheck=true",
-    "preview": "webpack --config webpack.preview.js"
+    "preview": "webpack --config webpack.preview.js",
+    "test": "standard"
   },
   "repository": {
     "type": "git",
@@ -62,5 +65,11 @@
     "webpack-cli": "^3.3.6",
     "webpack-dev-server": "^3.7.2",
     "webpack-node-externals": "^1.7.2"
+  },
+  "standard": {
+    "ignore": [
+      "/dist/"
+    ],
+    "globals": [ "Node" ]
   }
 }
