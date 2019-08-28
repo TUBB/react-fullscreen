@@ -23,50 +23,68 @@ render() {
 ```
 After that, use the [FulllScreen](https://github.com/TUBB/react-fullscreen/blob/master/src/FullScreen.js) refs(`fullScreen()`) to request or exit fullscreen feature for browsers.
 ```javascript
-class App extends React.Component { 
-  constructor(props) {
+import React from 'react'
+import ReactDOM from 'react-dom'
+import FullScreen, { fullScreenSupported } from '../index'
+// import FullScreen, { fullScreenSupported } from 'react-request-fullscreen'
+import './App.less'
+
+class App extends React.Component {
+  constructor (props) {
     super(props)
     this.state = {
-      isFullScreen: false,
+      isFullScreen: false
     }
   }
 
-  onFullScreenChange(isFullScreen) {
+  onFullScreenChange (isFullScreen) {
     this.setState({
-      isFullScreen,
+      isFullScreen
     })
   }
 
-  requestOrExitFullScreen() {
+  requestOrExitFullScreen () {
     this.fullScreenRef.fullScreen()
   }
 
-  render() {
+  requestOrExitFullScreenByElement () {
+    this.elFullScreenRef.fullScreen(this.elRef)
+  }
+
+  render () {
+    const { isFullScreen } = this.state
     return (
-      <div className="App">
+      <div className='app'>
         <p>Browser support fullscreen feature: {`${fullScreenSupported()}`}</p>
-        <p>Browser is fullscreen: {`${isFullScreen()}`}</p>
-        <FullScreen ref={ref => this.fullScreenRef = ref} onFullScreenChange={this.onFullScreenChange.bind(this)}>
+        <p>Browser is fullscreen: {`${isFullScreen}`}</p>
+        <FullScreen ref={ref => { this.fullScreenRef = ref }} onFullScreenChange={this.onFullScreenChange.bind(this)}>
           <div
-            className="rq" 
-            onClick={this.requestOrExitFullScreen.bind(this)}>
-            {!this.state.isFullScreen ? 'Request FullScreen' : 'Exit FullScreen'}
+            className='rq'
+            onClick={this.requestOrExitFullScreen.bind(this)}
+          >
+            {!isFullScreen ? 'Request FullScreen' : 'Exit FullScreen'}
           </div>
         </FullScreen>
-        <FullScreen ref={ref => this.elFullScreenRef = ref}>
+        <FullScreen ref={ref => { this.elFullScreenRef = ref }}>
           <div
-            className="el-rq" 
-            ref={ref => this.elRef = ref} 
-            onClick={() => this.elFullScreenRef.fullScreen(this.elRef)}>
-            {!this.state.isFullScreen ? 'Request FullScreen by Element' : 'Exit FullScreen by Element'}
-          </div>        
+            className='el-rq'
+            ref={ref => { this.elRef = ref }}
+            onClick={this.requestOrExitFullScreenByElement.bind(this)}
+          >
+            {!isFullScreen ? 'Request FullScreen by Element' : 'Exit FullScreen by Element'}
+          </div>
         </FullScreen>
-        <br/>
+        <br />
         <a href='https://github.com/TUBB/react-fullscreen'>GITHUB</a>
       </div>
-    );
+    )
   }
 }
+
+ReactDOM.render(
+  <App />,
+  document.getElementById('root')
+)
 ```
 Please see [Demo](https://github.com/TUBB/react-fullscreen/blob/master/src/example/App.js) project for detail.
 

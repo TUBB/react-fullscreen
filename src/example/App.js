@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import FullScreen, { isFullScreen, fullScreenSupported } from '../index'
-// import FullScreen, { isFullScreen, fullScreenSupported } from 'react-request-fullscreen'
+import FullScreen, { fullScreenSupported } from '../index'
+// import FullScreen, { fullScreenSupported } from 'react-request-fullscreen'
 import './App.less'
 
 class App extends React.Component {
@@ -18,25 +18,26 @@ class App extends React.Component {
     })
   }
 
-  requestOrExitFullScreen() {
+  requestOrExitFullScreen () {
     this.fullScreenRef.fullScreen()
   }
 
-  requestOrExitFullScreenByElement() {
+  requestOrExitFullScreenByElement () {
     this.elFullScreenRef.fullScreen(this.elRef)
   }
 
   render () {
+    const { isFullScreen } = this.state
     return (
       <div className='app'>
         <p>Browser support fullscreen feature: {`${fullScreenSupported()}`}</p>
-        <p>Browser is fullscreen: {`${isFullScreen()}`}</p>
+        <p>Browser is fullscreen: {`${isFullScreen}`}</p>
         <FullScreen ref={ref => { this.fullScreenRef = ref }} onFullScreenChange={this.onFullScreenChange.bind(this)}>
           <div
             className='rq'
             onClick={this.requestOrExitFullScreen.bind(this)}
           >
-            {!this.state.isFullScreen ? 'Request FullScreen' : 'Exit FullScreen'}
+            {!isFullScreen ? 'Request FullScreen' : 'Exit FullScreen'}
           </div>
         </FullScreen>
         <FullScreen ref={ref => { this.elFullScreenRef = ref }}>
@@ -45,7 +46,7 @@ class App extends React.Component {
             ref={ref => { this.elRef = ref }}
             onClick={this.requestOrExitFullScreenByElement.bind(this)}
           >
-            {!this.state.isFullScreen ? 'Request FullScreen by Element' : 'Exit FullScreen by Element'}
+            {!isFullScreen ? 'Request FullScreen by Element' : 'Exit FullScreen by Element'}
           </div>
         </FullScreen>
         <br />
