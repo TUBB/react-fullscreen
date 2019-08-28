@@ -21,7 +21,7 @@ render() {
     );
 }
 ```
-After that, use the [FulllScreen](https://github.com/TUBB/react-fullscreen/blob/master/src/FullScreen.js) refs(`fullScreen` method) to request or exit fullscreen feature for browsers.
+After that, use the [FulllScreen](https://github.com/TUBB/react-fullscreen/blob/master/src/FullScreen.js) refs(`fullScreen()`) to request or exit fullscreen feature for browsers.
 ```javascript
 class App extends React.Component { 
   constructor(props) {
@@ -37,6 +37,10 @@ class App extends React.Component {
     })
   }
 
+  requestOrExitFullScreen() {
+    this.fullScreenRef.fullScreen()
+  }
+
   render() {
     return (
       <div className="App">
@@ -45,7 +49,7 @@ class App extends React.Component {
         <FullScreen ref={ref => this.fullScreenRef = ref} onFullScreenChange={this.onFullScreenChange.bind(this)}>
           <div
             className="rq" 
-            onClick={() => this.fullScreenRef.fullScreen()}>
+            onClick={this.requestOrExitFullScreen.bind(this)}>
             {!this.state.isFullScreen ? 'Request FullScreen' : 'Exit FullScreen'}
           </div>
         </FullScreen>
@@ -64,12 +68,12 @@ class App extends React.Component {
   }
 }
 ```
-Please see [demo](https://github.com/TUBB/react-fullscreen/blob/master/src/example/App.js) project for detail.
+Please see [Demo](https://github.com/TUBB/react-fullscreen/blob/master/src/example/App.js) project for detail.
 
 ## API
-#### `FullScreen.fullScreen()` request or exit fullscreen feature.
-#### `fullScreenSupported()` whether fullscreen feature is supported for the browser.
-#### `isFullScreen()` the browser is fullscreen or not.
+- `FullScreen.fullScreen(element?: HTMLElement)` request or exit fullscreen feature.
+- `fullScreenSupported()` whether fullscreen feature is supported for the browser.
+- `isFullScreen()` the browser is fullscreen or not.
 
 ## Note
 Most code is come from [chrisdickinson/fullscreen](https://github.com/chrisdickinson/fullscreen)

@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import FullScreen, { isFullScreen, fullScreenSupported } from '../index'
+// import FullScreen, { isFullScreen, fullScreenSupported } from 'react-request-fullscreen'
 import './App.less'
 
 class App extends React.Component {
@@ -17,6 +18,14 @@ class App extends React.Component {
     })
   }
 
+  requestOrExitFullScreen() {
+    this.fullScreenRef.fullScreen()
+  }
+
+  requestOrExitFullScreenByElement() {
+    this.elFullScreenRef.fullScreen(this.elRef)
+  }
+
   render () {
     return (
       <div className='app'>
@@ -25,7 +34,7 @@ class App extends React.Component {
         <FullScreen ref={ref => { this.fullScreenRef = ref }} onFullScreenChange={this.onFullScreenChange.bind(this)}>
           <div
             className='rq'
-            onClick={() => { this.fullScreenRef.fullScreen() }}
+            onClick={this.requestOrExitFullScreen.bind(this)}
           >
             {!this.state.isFullScreen ? 'Request FullScreen' : 'Exit FullScreen'}
           </div>
@@ -34,7 +43,7 @@ class App extends React.Component {
           <div
             className='el-rq'
             ref={ref => { this.elRef = ref }}
-            onClick={() => { this.elFullScreenRef.fullScreen(this.elRef) }}
+            onClick={this.requestOrExitFullScreenByElement.bind(this)}
           >
             {!this.state.isFullScreen ? 'Request FullScreen by Element' : 'Exit FullScreen by Element'}
           </div>
